@@ -1,38 +1,327 @@
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Barriecito&family=Covered+By+Your+Grace&family=Dancing+Script:wght@400..700&family=Doto:wght@100..900&family=Great+Vibes&family=Gwendolyn:wght@400;700&family=Hanalei&family=Imperial+Script&family=Meow+Script&family=Pinyon+Script&family=Rouge+Script&family=Rubik+Iso&display=swap");
+
 .robot-container {
+  display: flex;
+  position: relative;
+  width: 600px;
+  height: 550px;
+  margin: auto;
+  padding: 20px 50px 5px;
 }
-
 .robot-face-shape {
+  position: relative;
+  z-index: 1;
+  width: 90%;
+  height: 95%;
+  margin: auto;
+  background-color: silver;
+  /*Image below by kjpargeter on Freepik -- "https://www.freepik.com/free-photo/grunge-wall-texture_988115.htm#fromView=keyword&page=1&position=0&uuid=76876e3c-8d5b-4622-a5fd-63ef690fb7c2&query=Metal+Texture">Image by kjpargeter on Freepik*/
+  background-image: url("https://img.freepik.com/free-photo/grunge-wall-texture_1048-4224.jpg?t=st=1742359054~exp=1742362654~hmac=3f54a4d49f763f1eab0dc0f4921ce42130e60cd286b5ab7ddddb6960886f7383&w=826");
+  border-radius: 50%;
+  border: 6px solid rgba(0, 0, 0, 0.748);
+  box-shadow: inset 5px 0 19px 15px rgba(0, 0, 0, 0.699), -8px -4px 15px black;
 }
 
+.robot-eye-right,
 .robot-eye-left {
+  position: absolute;
+  z-index: 2;
+  top: 30%;
+  font-size: 60px;
+  width: 1.38em;
+  height: 1.38em;
+  border-radius: 50%;
+  border-top: 0.15em solid rgba(68, 68, 68, 0.433);
+  background-size: 8% 8%;
+  background-image: linear-gradient(to right, grey 0.015em, transparent 0.015em),
+    linear-gradient(to bottom, grey 0.015em, transparent 0.015em);
+  background-color: rgb(253, 255, 154);
+  box-shadow: 1px -1px 8px 6px black, 0 0 2px 8px rgb(255, 255, 255),
+    inset 4px 6px 6px rgba(0, 0, 0, 0.668), 0 1px 1px rgba(251, 251, 251, 0.958),
+    0 0 0px 2px rgba(252, 251, 251, 0.686),
+    0px -14px 10px 10px rgba(56, 56, 56, 0.689),
+    0px 14px 7px 6px rgba(0, 0, 0, 0.44), 0 -1px 8px 6px rgba(0, 0, 0, 0.462),
+    2px 2px 32px 23px rgba(249, 244, 109, 0.488);
+}
+.robot-eye-left {
+  transform: rotate(-10deg);
+  left: 15%;
+}
+.robot-eye-right {
+  transform: rotate(10deg);
+  right: 15%;
+}
+.iris-left,
+.iris-right {
+  position: absolute;
+  line-height: 0.53em;
+  top: 25%;
+  left: 30%;
+  width: 35%;
+  height: 50%;
+  color: rgb(3, 221, 3);
+  font-family: "Doto", sans-serif;
+  font-weight: 900;
+  /* font-size: 65px; */
+  background-color: rgb(0, 255, 242);
+  background-size: 18% 18%;
+  background-image: linear-gradient(to right, grey 0.015em, transparent 0.015em),
+    linear-gradient(to bottom, grey 0.015em, transparent 0.015em);
+}
+.iris-left {
+  background-image: linear-gradient(#9cecfb, #65c7f7, #0052d4);
+  left: 45%;
+}
+.iris-right {
+  color: rgb(0, 0, 0);
+  left: 25%;
+  width: 35%;
+  height: 35%;
+  position: relative;
+  --c: no-repeat linear-gradient(#ff0000 0 0, rgb(128, 0, 0));
+  background: var(--c) center/100% 0.153em, var(--c) center/0.153em 100%;
+  background-position: center;
+}
+/* Not sure how this works, found on a css site. Trying to figure it out, really cool effect.*/
+.iris-right:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* Here i gather the var is retrieved from the above "block"?*/
+  background: var(--c) 0 0, var(--c) 100% 0, var(--c) 0 100%, var(--c) 100% 100%;
+  background-size: 0.153em 0.153em;
+  /* retrieves the declare keyframe, specifies seconds, modified to be slower, Unsure of the cubic bezier*/
+  animation: l16 7.5s infinite cubic-bezier(0.3, 1, 0, 1);
 }
 
-.robot-eye-right {
+.robot-ear-left,
+.robot-ear-right {
+  position: absolute;
+  top: 35%;
+  z-index: 0;
+  margin: 2px;
+  align-content: center;
+  text-indent: 16px;
+  font-size: 60px;
+  font-weight: lighter;
+  width: 45px;
+  height: 150px;
+  color: rgba(245, 245, 245, 0.653);
+  text-shadow: 0 -15px 6px rgb(255, 255, 255), 0 15px 6px rgb(255, 255, 255);
+  background-color: rgb(132, 131, 131);
+  border-radius: 80% / 20%;
+  box-shadow: inset 0 2px 8px 7px black,
+    inset 20px 0 12px 20px rgb(148, 141, 141);
 }
 
 .robot-ear-left {
+  left: 4%;
+  transform: rotate(5deg);
 }
-
 .robot-ear-right {
+  right: 4%;
+  transform: rotate(-5deg);
+  box-shadow: -3px 0 10px 2px black, inset 0 2px 8px 7px black,
+    inset 20px 0 12px 20px rgb(148, 141, 141);
+}
+.antenna-left,
+.antenna-right {
+  position: absolute;
+  width: 10px;
+  height: 160px;
+  top: -100%;
+  background-color: rgb(0, 0, 0);
+  border-radius: 40% 40% 0 0;
+  box-shadow: 0 -10px 2px -2px rgb(255, 0, 0),
+    1px -10px 4px -3px rgba(255, 255, 0, 0.742),
+    -1px -10px 4px -3px rgba(255, 255, 0, 0.742),
+    0px -15px 5px -3px rgb(255, 153, 0);
+  left: 35%;
+}
+.antenna-left {
+  transform: rotate(5deg);
+}
+.antenna-right {
+  transform: rotate(-5deg);
 }
 
 .robot-nose {
+  position: relative;
+  writing-mode: vertical-rl;
+  text-align: end;
+  line-height: 140%;
+  height: 30%;
+  width: 20%;
+  left: 40%;
+  top: 33%;
+  font-size: 60px;
+  color: rgba(0, 0, 0, 0.774);
+  background-image: url("https://img.freepik.com/free-photo/grunge-wall-texture_1048-4224.jpg?t=st=1742359054~exp=1742362654~hmac=3f54a4d49f763f1eab0dc0f4921ce42130e60cd286b5ab7ddddb6960886f7383&w=826");
+  background-color: black;
+  border-radius: 12px 12px 35% 35%;
+  background-size: 100%;
+  text-shadow: 5px 0 4px black;
+  box-shadow: inset 0 -15px 5px 5px rgba(0, 0, 0, 0.763),
+    inset 4px -15px 10px 10px rgba(0, 0, 0, 0.581);
 }
 
+/*Got ahead of the assignment here, but had fun! */
 .robot-teeth {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: absolute;
+  font-size: 18px;
+  padding: 0 0 0 5px;
+  font-family: "Doto", sans-serif;
+  font-weight: 900;
+  text-shadow: 0 1px 6px black, 0 -1px 3px black;
+  text-align: center;
+  line-height: 20px;
+  overflow: clip;
+  border-radius: 10px;
+  max-height: 90px;
+  aspect-ratio: 16 / 9;
+  background: #f1c40f;
+  bottom: 10%;
+  left: 32%;
+  background-size: 4% 4%;
+  background-image: linear-gradient(to right, grey 1px, transparent 1px),
+    linear-gradient(to bottom, grey 1px, transparent 1px);
+  background-color: rgb(253, 255, 154);
+  border-block: 20px solid rgba(59, 59, 59, 0.648);
 }
 
 .robot-tooth {
+  position: relative;
+  background-color: rgba(126, 126, 126, 0.76);
+  margin: 1px;
+  height: 21px;
+  width: 15px;
+  border: 2px solid rgb(69, 26, 26);
+  border-radius: 0 0 30% 30%;
+  flex-wrap: wrap;
+  color: rgb(255, 0, 0);
+  animation: blinker-teeth 3s step-start infinite;
 }
 
+.robot-tooth:nth-child(n + 10) {
+  color: deepskyblue;
+  line-height: 110%;
+  border-radius: 30% 30% 0 0;
+  bottom: -3px;
+}
 .robot-hair-style {
+  display: flex;
+  position: absolute;
+  justify-items: center;
+  left: 110px;
+  z-index: 3;
+  padding: 0%;
+  gap: 10%;
+  height: 100px;
+  width: 370px;
 }
-
-.robot-hair-one {
-}
-
-.robot-hair-two {
-}
-
+.robot-hair-one,
+.robot-hair-two,
 .robot-hair-three {
+  animation: slow-blink 4.8s infinite both;
+}
+.robot-hair-one {
+  position: relative;
+  top: 50%;
+  background-color: rgb(219, 3, 219);
+  transform: rotate(-50deg);
+  height: 40px;
+  width: 40px;
+  border-radius: 30px 30px 0 0;
+  border-top: 4px solid rgba(0, 0, 0, 0.718);
+  box-shadow: inset 0 2px 19px 4px black,
+    inset 0 7px 10px 4px rgb(255, 139, 255);
+}
+.one-b {
+  transform: rotate(50deg);
+}
+.robot-hair-two {
+  position: relative;
+  height: 50px;
+  width: 50px;
+  top: 0%;
+  background-color: rgb(2, 217, 217);
+  transform: rotate(-30deg);
+  border: 2px solid rgb(0, 105, 134);
+  border-radius: 30px 30px 0 0;
+  box-shadow: inset 0 2px 19px 4px rgba(0, 0, 0, 0.863),
+    inset 0 7px 10px 4px rgb(116, 225, 255);
+  border-top: 6px solid rgba(0, 0, 0, 0.599);
+}
+.two-b {
+  transform: rotate(30deg);
+}
+.robot-hair-three {
+  position: relative;
+  top: -20px;
+  height: 70px;
+  width: 70px;
+  background-color: rgb(3, 218, 3);
+  border: 2px solid rgba(0, 0, 0, 0.347);
+  border-radius: 30px 30px 0 0;
+  box-shadow: inset 0 2px 19px 4px rgba(0, 0, 0, 0.858),
+    inset 0 7px 10px 4px rgb(46, 255, 130);
+  border-top: 8px solid rgba(0, 0, 0, 0.577);
+}
+
+.glow {
+  box-shadow: 1px -1px 8px 6px black, 0 0 2px 8px rgb(255, 255, 255),
+    inset 4px 6px 6px rgba(0, 0, 0, 0.668), 0 1px 1px rgba(251, 251, 251, 0.958),
+    0 0 0px 2px rgba(252, 251, 251, 0.686),
+    0px -14px 18px 2px rgba(255, 23, 23, 0.405),
+    0px 14px 18px 2px rgba(41, 198, 255, 0.405),
+    0 -1px 8px 6px rgba(0, 0, 0, 0.462),
+    2px 2px 32px 23px rgba(249, 244, 109, 0.488);
+  animation: glow-blink 3s step-start infinite;
+}
+
+@keyframes glow-blink {
+  50% {
+    box-shadow: 1px -1px 8px 6px black, 0 0 2px 8px rgb(255, 255, 255),
+      inset 4px 6px 6px rgba(0, 0, 0, 0.668),
+      0 1px 1px rgba(251, 251, 251, 0.958),
+      0 0 0px 2px rgba(252, 251, 251, 0.686),
+      0px -14px 10px 10px rgba(56, 56, 56, 0.689),
+      0px 14px 7px 6px rgba(0, 0, 0, 0.44), 0 -1px 8px 6px rgba(0, 0, 0, 0.462),
+      2px 2px 32px 23px rgba(249, 244, 109, 0.488);
+  }
+}
+@keyframes blinker-teeth {
+  50% {
+    color: rgba(240, 248, 255, 0);
+    /* opacity: 0; */
+  }
+}
+@keyframes slow-blink {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes l16 {
+  33% {
+    inset: -10px;
+    transform: rotate(0deg);
+  }
+  66% {
+    inset: -10px;
+    transform: rotate(90deg);
+  }
+  100% {
+    inset: 0;
+    transform: rotate(90deg);
+  }
 }
